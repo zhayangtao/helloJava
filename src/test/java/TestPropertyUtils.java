@@ -1,5 +1,5 @@
+import org.apache.commons.beanutils.PropertyUtils;
 import org.junit.Test;
-import org.apache.commons.beanutils.*;
 
 import java.lang.reflect.InvocationTargetException;
 
