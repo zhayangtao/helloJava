@@ -1,7 +1,5 @@
 package javanio;
 
-import org.junit.Test;
-
 import java.io.*;
 import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
@@ -13,7 +11,6 @@ import java.nio.channels.Selector;
  */
 public class JavaNio {
 
-    @Test
     public void test1() {
         try (RandomAccessFile aFile = new RandomAccessFile("nio-data.txt", "rw")) {
             FileChannel fileChannel = aFile.getChannel();
@@ -38,7 +35,6 @@ public class JavaNio {
         }
     }
 
-    @Test
     public void test2() {
         try {
             RandomAccessFile fromFile = new RandomAccessFile("fromFile.txt", "rw");
@@ -49,14 +45,11 @@ public class JavaNio {
             long count = fromChannel.size();
 
             toChannel.transferFrom(fromChannel, position, count);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    @Test
     public void test3() {
         try {
             Selector selector = Selector.open();
@@ -99,17 +92,18 @@ public class JavaNio {
 
             fc = fos.getChannel();
             //write data into buffer
-            for(int i = 0; i < data.length; i++) {
-                buffer.put(data[i]);
+            for (byte aData : data) {
+                buffer.put(aData);
             }
             buffer.flip();
             fc.write(buffer);
             fc.close();
 
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public static void main(String[] args) {
     }
 }
