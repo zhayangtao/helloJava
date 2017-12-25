@@ -12,3 +12,6 @@
 hs_err_pid*
 helloJava.iml
 .gitignore
+.idea/
+src/main/main19.iml
+*.iml
